@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Askbootstrap">
+    <meta name="author" content="Askbootstrap">
+    <link rel="icon" type="image/png" href="img/fav.png">
+    <title>Online Food Ordering Website</title>
+    <!-- Slick Slider -->
+    <link href="vendor/slick/slick/slick.css" rel="stylesheet" type="text/css">
+    <link href="vendor/slick/slick/slick-theme.css" rel="stylesheet" type="text/css">
+    <!-- Feather Icon-->
+    <link href="vendor/icons/feather.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Sidebar CSS -->
+    <link href="vendor/sidebar/demo.css" rel="stylesheet">
+    <!-- Our style -->
+    <link href="loginStyle.css" rel="stylesheet" />
+</head>
+
+<body onload="logininitfunc()">
+    <div class="login-page vh-100">
+        <video loop autoplay muted id="vid">
+            <source src="img/bg.mp4" type="video/mp4">
+            <source src="img/bg.mp4" type="video/ogg">
+            Your browser does not support the video tag.
+        </video>
+        <div class="d-flex align-items-center justify-content-center vh-100">
+            <div class="px-5 col-md-6 ms-auto">
+                <div class="px-5 col-10 mx-auto">
+                    <h2 class="text-dark my-0">Welcome Back</h2>
+                    <p class="text-50">log in to continue</p>
+                    <form class="mt-5 mb-4" action="verification.html">
+                        <div class="form-group">
+                            <label class="text-dark pb-1">User Name</label>
+                            <input id="user_name_login" type="text" placeholder="Enter user name" class="form-control py-1">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark pb-1">Password</label>
+                            <input id="password_login" type="password" placeholder="Enter Password" class="form-control py-1">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-lg w-100" onclick="loginfunc()">SIGN IN</button>
+                       
+                    </form>
+                    
+                    <div class="d-flex align-items-center justify-content-center">
+                        <a href="signup.html">
+                            <p class="text-center m-0">Don't have an account yet? Register</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- slick Slider JS-->
+    <script type="text/javascript" src="vendor/slick/slick/slick.min.js"></script>
+    <!-- Sidebar JS-->
+    <script type="text/javascript" src="vendor/sidebar/hc-offcanvas-nav.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script type="text/javascript" src="js/osahan.js"></script>
+
+
+    <!--login JS our code:-->
+    <script src="loginJS.js"></script>
+
+</body>
+
+</html>

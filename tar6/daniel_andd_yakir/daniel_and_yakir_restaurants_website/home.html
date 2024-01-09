@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Askbootstrap">
+    <meta name="author" content="Askbootstrap">
+    <link rel="icon" type="image/png" href="img/fav.png">
+    <title>Online Food Ordering Website</title>
+    <!-- Slick Slider -->
+    <link href="vendor/slick/slick/slick.css" rel="stylesheet" type="text/css">
+    <link href="vendor/slick/slick/slick-theme.css" rel="stylesheet" type="text/css">
+    <!-- Feather Icon-->
+    <link href="vendor/icons/feather.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Sidebar CSS -->
+    <link href="vendor/sidebar/demo.css" rel="stylesheet">
+    <!-- Our Map -->
+    <!-- for leaflet map-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin="" />
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin="">
+    </script>
+    <!-- Our Style -->
+    <link href="homeStyle.css" rel="stylesheet" />
+</head>
+
+<body class="fixed-bottom-bar" onload="initfunc(),logHidefunc(),showFiltersfunc()">
+    <header class="section-header">
+        <section class="header-main shadow-sm bg-primary">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-1">
+                        <a href="home.html" class="brand-wrap mb-0">
+                            <img alt="#" class="img-fluid bg-light rounded-circle" src="img/logo_web.png">
+                        </a>
+                        <!-- brand-wrap.// -->
+                    </div>
+
+                    <!-- col.// -->
+                    <div class="col-11">
+                        <div class="d-flex align-items-center justify-content-end pe-5">
+                            <!-- top-bar -->
+                            <a href="favorites.html" class="text-decoration-none text-dark">
+                                <i class="p-2 bg-light rounded-circle fw-bold feather-heart"></i> <span class="text-light me-2">favorites</span>
+                            </a>
+                            <a href="restaurant.html" class="text-decoration-none text-dark">
+                                <i class="p-2 bg-light rounded-circle fw-bold feather-shopping-cart"></i> <span class="text-light me-2">order</span>
+                            </a>
+                            <a href="login.html" id="login_link" class="text-decoration-none text-dark">
+                                <i class="p-2 bg-light rounded-circle fw-bold feather-user"></i> <span class="text-light me-2">sign in</span>
+                            </a>
+                            <a href="home.html" id="logout_link" class="text-decoration-none text-dark" onclick="logOutFunc()">
+                                <i class="p-2 bg-light rounded-circle fw-bold feather-log-out"></i> <span class="text-light me-2">log out</span>
+                            </a>
+                        </div>
+                        <!-- widgets-wrap.// -->
+                    </div>
+                    <!-- col.// -->
+                </div>
+                <!-- row.// -->
+            </div>
+            <!-- container.// -->
+        </section>
+        <!-- header-main .// -->
+    </header>
+    <div class="osahan-home-page">
+        <!-- phone top bar -->
+        <div class="d-none">
+            <div class="bg-primary border-bottom p-3 d-flex align-items-center">
+                <a href="home.html" class="brand-wrap mb-0 me-2">
+                    <img alt="#" class="img-fluid bg-light rounded-circle" src="img/logo_web.png">
+                </a>
+            </div>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="container">
+            <div class="cat-slider">
+                <div class="cat-item px-1 py-3">
+                    <a id="main_filter" class="bg-primary rounded d-block p-2 text-center shadow-sm" data-bs-toggle="modal" data-bs-target="#filterModal" href="#">
+                        <img alt="#" src="img/icons/filter.png" class="img-fluid mb-2">
+                        <p class="m-0 small text-light">Custom</p>
+                    </a>
+                </div>
+
+                <div class="cat-item px-1 py-3">
+                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" data-bs-toggle="modal" data-bs-target="#locationModal" href="#">
+                        <img alt="#" src="img/icons/location.png" class="img-fluid mb-2">
+                        <p class="m-0 small">Location</p>
+                    </a>
+                </div>
+
+                <div class="cat-item px-1 py-3">
+                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="#" onclick="filterFourStarfunc('Pizza')">
+                        <img alt="#" src="img/icons/Pizza.png" class="img-fluid mb-2">
+                        <p class="m-0 small">Pizza</p>
+                    </a>
+                </div>
+                <div class="cat-item px-1 py-3">
+                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="#" onclick="filterFourStarfunc('Burger')">
+                        <img alt="#" src="img/icons/Burger.png" class="img-fluid mb-2">
+                        <p class="m-0 small">Burger</p>
+                    </a>
+                </div>
+                <div class="cat-item px-1 py-3">
+                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="#" onclick="filterFourStarfunc('Italian')">
+                        <img alt="#" src="img/icons/Pasta.jpeg" class="img-fluid mb-2">
+                        <p class="m-0 small">Italian</p>
+                    </a>
+                </div>
+                <div class="cat-item px-1 py-3">
+                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="#" onclick="filterFourStarfunc('Sandwich')">
+                        <img alt="#" src="img/icons/Sandwich.png" class="img-fluid mb-2">
+                        <p class="m-0 small">Sandwich</p>
+                    </a>
+                </div>
+                <div class="cat-item px-1 py-3">
+                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="#" onclick="filterFourStarfunc('Cafe')">
+                        <img alt="#" src="img/icons/Coffee.png" class="img-fluid mb-2">
+                        <p class="m-0 small">Cafe</p>
+                    </a>
+                </div>
+                <div class="cat-item px-1 py-3">
+                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="#" onclick="filterFourStarfunc('Steak')">
+                        <img alt="#" src="img/icons/Steak.png" class="img-fluid mb-2">
+                        <p class="m-0 small">Steak</p>
+                    </a>
+                </div>
+                <div class="cat-item px-1 py-3">
+                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="#" onclick="filterFourStarfunc('Sushi')">
+                        <img alt="#" src="img/icons/sushi.jpeg" class="img-fluid mb-2">
+                        <p class="m-0 small">Sushi</p>
+                    </a>
+                </div>
+                <div class="cat-item px-1 py-3">
+                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="#" onclick="filterFourStarfunc('Breakfast')">
+                        <img alt="#" src="img/icons/Breakfast.png" class="img-fluid mb-2">
+                        <p class="m-0 small">Breakfast</p>
+                    </a>
+                </div>
+                <div class="cat-item px-1 py-3">
+                    <a class="bg-white rounded d-block p-2 text-center shadow-sm" href="#" onclick="filterFourStarfunc('Salad')">
+                        <img alt="#" src="img/icons/Salad.png" class="img-fluid mb-2">
+                        <p class="m-0 small">Salad</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="pt-4 pb-2 title d-flex align-items-center">
+            <h5 id="restaurants_headline" class="m-0">No Filter Selected</h5>
+        </div>
+        <div id="restaurants_cards" class="row">
+            <!-- build restaurants cards dynamiclly -->
+
+        </div>
+
+        <!-- map section -->
+        <section>
+            <div id="map">
+
+            </div>
+        </section>
+        <!-- end of map section -->
+    </div>
+    <!-- phone bottom-bar -->
+    <div class="osahan-menu-fotter fixed-bottom bg-white px-3 py-2 text-center d-none">
+        <div class="row">
+            <div class="col selected">
+                <a href="#" class="text-danger small fw-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-home text-danger"></i></p>
+                    Home
+                </a>
+            </div>
+
+            <div id="login_link_phone" class="col">
+                <a href="login.html" class="text-dark small fw-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-user"></i></p>
+                    sign in
+                </a>
+            </div>
+
+            <div class="col bg-white rounded-circle mt-n4 px-3 py-2">
+                <div class="bg-danger rounded-circle mt-n0 shadow">
+                    <a href="restaurant.html" class="text-white small fw-bold text-decoration-none">
+                        <i class="feather-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col">
+                <a href="favorites.html" class="text-dark small fw-bold text-decoration-none">
+                    <p class="h4 m-0"><i class="feather-heart"></i></p>
+                    Favorites
+                </a>
+            </div>
+            <div id="logout_link_phone" class="col">
+                <a href="home.html" class="text-dark small fw-bold text-decoration-none" onclick="logOutFunc()">
+                    <p class="h4 m-0"><i class="feather-log-out"></i></p>
+                    log out
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="filterModal" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title text-light">Custom Filter</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="osahan-filter">
+                        <div class="filter">
+                            <!-- SORT BY -->
+                            <div class="p-3 bg-light border-bottom">
+                                <div class="border-bottom p-3">
+                                    <span id="cuisines_filter" class="dropdown-item">
+                                        <!-- Cuisines filter build dynamicly with JS -->
+                                    </span>
+                                    <span id="dine_in_or_online_filter" class="dropdown-item">
+                                        <!-- Cuisines filter build dynamicly with JS -->
+                                    </span>
+                                    <span id="range_price_filter" class="dropdown-item">
+                                        <!-- Cuisines filter build dynamicly with JS -->
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="modal-footer p-0 border-0">
+                                <div class="col-6 m-0 p-0">
+                                    <button type="button" class="btn border-top btn-lg w-100" data-bs-dismiss="modal">Close</button>
+                                </div>
+                                <div class="col-6 m-0 p-0">
+                                    <button type="button" class="btn btn-primary btn-lg w-100" onclick="filterActivatedfunc()" data-bs-dismiss="modal">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="locationModal" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title text-light">Top Restaurants Base On Location</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="osahan-filter">
+                        <div class="filter">
+                            <!-- SORT BY -->
+                            <div class="p-3 bg-light border-bottom">
+                                <div class="border-bottom p-3">
+                                    <div class="p-3 dropdown-item bg-primary">
+                                        <div class="border-bottom">
+                                            <p class="p_hover text-decoration-none" onclick="locationfilterfunc('Albany')" data-bs-dismiss="modal">
+                                                <span class="fw-bold text-light m-0">
+                                                    <i class="feather-navigation"></i>
+                                                    Albany, New York
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="p-3 dropdown-item bg-primary">
+                                        <div class="border-bottom">
+                                            <p class="p_hover text-decoration-none" onclick="locationfilterfunc('Orlando')" data-bs-dismiss="modal">
+                                                <span class="fw-bold text-light m-0">
+                                                    <i class="feather-navigation"></i>
+                                                    Orlando, Florida
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="p-3 dropdown-item bg-primary">
+                                        <div class="border-bottom">
+                                            <p class="p_hover text-decoration-none" onclick="locationfilterfunc('New Delhi')" data-bs-dismiss="modal">
+                                                <span class="fw-bold text-light m-0">
+                                                    <i class="feather-navigation"></i>
+                                                    New Delhi, India
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="p-3 dropdown-item bg-primary">
+                                        <div class="border-bottom">
+                                            <p class="p_hover text-decoration-none" onclick="locationfilterfunc('Makati City')"data-bs-dismiss="modal">
+                                                <span class="fw-bold text-light m-0">
+                                                    <i class="feather-navigation"></i>
+                                                    Makati, Philippines
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer p-0 border-0">
+                                <div class="col-12 m-0 p-0">
+                                    <button type="button" class="btn border-top btn-lg w-100 bg-primary text-light" data-bs-dismiss="modal">Close</button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- slick Slider JS-->
+    <script type="text/javascript" src="vendor/slick/slick/slick.min.js"></script>
+    <!-- Sidebar JS-->
+    <script type="text/javascript" src="vendor/sidebar/hc-offcanvas-nav.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script type="text/javascript" src="js/osahan.js"></script>
+    <!-- Our JS -->
+    <!-- restaurants Json JS -->
+    <script src="Restaurants.js"></script>
+    <!-- home JS  -->
+    <script src="homeJS.js"></script>
+</body>
+
+</html>

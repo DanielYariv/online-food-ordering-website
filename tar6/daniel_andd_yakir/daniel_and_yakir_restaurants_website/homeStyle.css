@@ -1,0 +1,35 @@
+﻿#map {
+    height: 300px;
+    width: 100%;
+    flex: 1;
+}
+
+#main_filter {
+    font-size: 50px;
+    margin: 0 auto;
+}
+
+.list-card .favourite-heart i, list-card .favourite-heart i, .p_hover {
+    cursor: pointer;
+}
+
+select {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #d92662 0%, #e23744 100%);
+    color: #fff;
+}
+
+    select option {
+        background-color: #fff;
+        color: #d92662;
+        transition: background-color 0.3s ease;
+    }
+
+body > header > section > div > div > div.col-11 > div {
+    height: 55px;
+}
